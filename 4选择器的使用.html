@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  div {
+    width: 200px;
+    height: 200px;
+    background-color: grey;
+  }
+
+  button {
+    width: 100px;
+    height: 50px;
+  }
+</style>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+  function fun1 () {
+    var obj = $("#one")
+      obj.css("background", "red");
+  }
+  function fun2 () {
+    var obj = $(".two")
+      obj.css("background", "green");
+  }
+  function fun3 () {
+    var obj = $("div")
+      obj.css("background", "blue");
+  }
+</script>
+<body>
+  <div id="one">one</div>
+  <button type="button" value="改变one的颜色为red" onclick="fun1()">one red</button>
+  <div class="two">two</div>
+  <button type="button" value="改变two的颜色为green" onclick="fun2()">two green</button>
+  <div>three</div>
+  <button type="button" value="改变所有div的颜色为blue" onclick="fun3()">all blue</button>
+  <div>four</div>
+</body>
+</html>

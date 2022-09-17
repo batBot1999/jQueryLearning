@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <div>
+      <input type="checkbox">
+      <input type="text" id="todo-input">
+    </div>
+    <ul class="todo-list">
+
+    </ul>
+  </div>
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript">
+    $('#todo-input').on('keyup', function (e) {
+      if (e.code == 'Enter') {
+        var todoText = this.value.trim() // 去掉文字空白
+        if (todoText == "") { // 如果输出空字符串直接返回而不是添加
+          return
+        }
+
+         var a = $(`
+          <li>
+            <input type="checkbox">
+            <span>${todoText}</span>
+            <button>&time;</button>
+          </li>
+        `).appendTo('.todo-list')
+        .on('click', 'button', function (e) {
+          $(this).parent().remove()
+        })
+        .on('click', 'span', function (e) {
+
+        })
+        .on('click', 'input[type=checkbox]', function(e) {
+
+        })
+
+          this.value='';
+      }
+    })
+
+    elt('li', {class:'woef', id: 'wef'}, 'owiejf', elt('input'), elt('span', {}, 'todoText'), elt('button'));
+
+    function elt (type, attrs = {}, ...children) {
+      var node = document.createElement(type);
+      for (var [key, val] of Object.entries(attrs)) {
+        node.setAttribute(key, val);
+      }
+
+      for (var child of children) {
+        node.append(child);
+      }
+      return node;
+    }
+
+  </script>
+</body>
+</html>

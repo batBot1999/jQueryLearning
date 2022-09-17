@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" value="我是type=text"><br>
+  <br/>
+  <input type="radio" value="man" />男<br>
+  <input type="radio" value="woman" />女<br>
+  <br>
+  <input type="checkbox" value="bike"> 骑行<br>
+  <input type="checkbox" value="football"> 足球<br>
+  <input type="checkbox" value="music"> 音乐<br>
+  <br>
+  <input type="button" value="读取text值" onclick="fun1()">
+  <input type="button" value="读取radio值" onclick="fun2()">
+  <input type="button" value="读取checkbox的值" onclick="fun3()">
+
+
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript">
+    function fun1() {
+      // 表单选择器 $(":type的值")
+      var $obj = $(":text");
+      // 获取value属性的值，val()是jQuery中的函数,读取value属性值.
+      alert( $obj.val() );
+    }
+    function fun2() {
+      var $obj = $(":radio"); // jQuery对象是一个数组,数组可以循环,母亲啊有两个对象,man和woman.
+      for (var i = 0; i < $obj.length; i++) {
+          var dom = $obj[i];
+          alert(dom.value);
+      }
+    }
+    function fun3() {
+      var obj = $(":checkbox"); // 数组有三个对象
+      for (var i = 0; i < obj.length; i++) {
+        var dom = obj[i];
+        // alert(dom.value);
+        var jdom = $(dom); // jQuery方法获取dom
+        alert(jdom.val());
+      }
+    }
+  </script>
+</body>
+</html>

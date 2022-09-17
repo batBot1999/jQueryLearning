@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script>
+    // 使用jQuery的函数,实现ajax请求的处理.
+    // 没有jQuery之前,使用XMLHttpRequest做ajax请求,有四个步骤,jQuery简化了ajax请求的处理.
+    // 使用三个函数可以实现ajax请求的处理.
+    // 1 $.ajax() jQuery中实现ajax的核心函数.
+    // 2 $.post() 使用post方式做ajax请求.
+    // 3 $.get() 使用get方式发送ajax请求.
+    // 其中$.post()和$.get()他们在内部都是调用的$.ajax().
+
+    // $.ajax()的使用,函数的参数表示请求的url,请求的方式,参数值等信息.
+    // $.ajax()参数是一个json结构.
+    // 例如: $.ajax({名称: 值, 名称1:值1...}).
+    // json结构说明:
+    例如: $.ajax({async:true,
+                    contentType:"application/json",
+                    data: {name: "lisi", age:20},
+                    dataType: "json",
+                    error: function() {
+                  // 请求出现错误时,执行的函数.
+                    },
+                    success:function(data) {
+                      // data 就是responseText,返回的数据,是jQuery处理后的数据.
+                    },
+                    url: "bmiAjax",
+                    type: "get"
+                  }
+                )
+
+    // 1)默认不写 async: 布尔值,默认true,表示异步请求,也就是和xmlHttp.open(get, url, true),第三个参数一样的意思,默认是异步所以可以不写async配置项.
+    // 2)默认不写 contentType: 一个字符串,表示从浏览器发送服务器的参数的类型,也可以不写,比如想表示请求的参数是json格式,可以写application/json.
+    // 3) data: 可以是字符串,数组,json,表示请求的参数和参数值,常用的是json格式的数据.
+    // 4) dataType: 用来表示期望从服务器端返回的数据格式,可选的有:xml,html,text,json,当我们使用$.ajax()发送请求时,
+    //    会把dataType的值发送给服务器,那我们的servlet能够读取到dataType的值,就知道你的浏览器需要的是json或者xml的数据,那么服务器就可以返回你需要的数据格式.
+    // 5)不需要也可以不写 error: 一个function,表示当请求发生错误时,执行的函数.
+    // 6) sucess: 一个function,请求成功了,从服务器端返回了数据,会执行success指定函数,之前使用XMLHttpRequest对象,当readyState==4&&status==200的时候.
+    // 7) url: 请求的地址.
+    // 8)默认不写 type: 请求的方式,get或者post,不用区分大小写,默认是get.
+
+    // 所以主要使用url,data,dataType,success
+
+    // 一个真实的$ajax请求:
+    $(function(){
+      $("#btn").click(function() {
+        // 获取dom的value值
+        var proid = $("#proid").val();
+        // 发起ajax请求
+        $.ajax({
+          url: "jQueryJson",
+          data: {
+            "proid": proid
+          },
+          dataType: "json",
+          success: function (resp) {
+            // resp是json对象,服务器端返回的数据.
+            $("#proname").val(resp.name);
+            $("#projiancheng").val(resp.jiancheng);
+            $("#proshenghui").val(resp.shenghui);
+          }
+        })
+      })
+    })
+  </script>
+</body>
+</html>

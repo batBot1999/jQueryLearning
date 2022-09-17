@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      background-color: grey;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>过滤器的基本使用</h1>
+  <div>div0</div>
+  <div>div1</div>
+  <div>div2
+    <div>div3</div>
+    <div>div4</div>
+  </div>
+  <div>div5</div>
+  <hr>
+  <input type="button" value="第一个div变成红色" id="btn1"><br>
+  <input type="button" value="最后一个div变成绿色" id="btn2"><br>
+  <input type="button" value="下标为3的div变成蓝色" id="btn3"><br>
+  <input type="button" value="下标小于3的div变成橙色" id="btn4"><br>
+  <input type="button" value="下标大于3的div变成紫色" id="btn5"><br>
+
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script>
+    // 在定位了dom对象后，根据一些条件筛选dom对象
+    // 过滤器不能单独用，必须结合选择器一起用
+    // $("选择器: first"): 第一个dom对象
+    // $("选择器: last"): 数组中的最后一个dom对象
+    // $("选择器: eq(数组的下标)"): 获取指定下标的dom对象
+    // $("选择器: lt(下标)"): 获取小于下标的所有dom对象
+    // $("选择器: gt(下标)"): 获取大于下标的所有dom对象
+
+    // $(document).ready(): 当页面中的dom对象加载成功后,会执行ready();
+    // 相当于是onLoad()
+    $(function () {
+      // 当页面dom对象加载后,必须给对象绑定事件,因为此时button对象已经在内存中创建好了,才能使用.
+      // 绑定btn1
+      $("#btn1").click(function () {
+        // alert("点击按钮");
+
+        //
+        var obj = $("div:first"); // 第一个div变成红色
+        obj.css("background", "red");
+      })
+
+      // 绑定btn2
+      $("#btn2").click(function () {
+        var obj = $("div:last");
+        obj.css("background", "green"); // 最后一个div变成绿色
+      })
+
+      // 绑定btn3
+      $("#btn3").click(function () {
+        var obj = $("div:eq(3)");
+        obj.css("background", "blue"); // 下标为3的div变成蓝色
+      })
+
+      // 绑定btn4
+      $("#btn4").click(function () {
+        var obj = $("div:lt(3)");
+        obj.css("background", "orange"); // 下标小于3的div变成橙色
+      })
+
+      // 绑定btn4
+      $("#btn5").click(function () {
+        var obj = $("div:gt(3)");
+        obj.css("background", "purple"); // 下标大于3的div变成紫色
+      })
+    })
+  </script>
+</body>
+
+</html>

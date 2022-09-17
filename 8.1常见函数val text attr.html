@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 常用函数val append each -->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <p>文本框val</p>
+  <input type="text" value="刘备" id=""><br>
+  <input type="text" value="关羽" id=""><br>
+  <input type="text" value="张飞" id=""><br>
+  <p>文本数据text</p>
+  <div>我是第一个div</div>
+  <div>我是第二个div</div>
+  <div>我是第三个div</div>
+  <p>图片</p>
+  <img src="./img/handsome.jpg" alt="" id="img1"><br>
+  <img src="./img/zhaofour.jpg" alt="" id="img2"><br>
+  <p>功能按钮</p>
+  <button id="btn1">获取第一个文本框的值</button><br>
+  <button id="btn2">设置所有文本框为新值</button><br>
+  <button id="btn3">获取div的所有文本</button><br>
+  <button id="btn4">给所有div设置新的文本内容</button><br>
+  <button id="btn5">获取img图片路径</button><br>
+
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script>
+    // val 操作数组中dom对象的value属性
+    // $(选择器).val() 无参数调用形式,读取数组中第一个dom对象的value属性
+    // $(选择器).val(值) 有参数形式调用,对数组中所有dom对象的value属性值进行统一赋值
+
+    // text 操作数组中所有dom对象的文字显示内容属性
+    // $(选择器).text():无参数调用,读取数组中所有dom对象的文字显示内容,将得到内容拼接为一个字符串返回
+    // $(选择器).text(值):有参数方式,对数组中所有dom对象的文字显示内容进行统一赋值.
+
+    // attr 对val text以外的其他属性进行操作
+    // $(选择器).attr("属性名")：获取dom数组第一个对象的属性值.
+    // $(选择器).attr("属性名","值"):对数组中所有dom对象的属性设置新值.
+
+    // val的两种方式无参和有参
+    $(function () {
+      // 获取第一个文本框的值
+      $("#btn1").click(function () {
+        var text = $(":text").val();
+        alert(text);
+      })
+
+      // 设置所有文本框为新值
+      $("#btn2").click(function () {
+        $(":text").val("三国演义");
+      })
+    })
+
+    // text的两种方式无参和有参
+    $(function () {
+      // 这个text()无参数,获取dom对象的文本值,连接成一个字符串.
+      $("#btn3").click(function () {
+        alert($("div").text());
+      })
+
+      $("#btn4").click(function () {
+        // 给所有div设置新的文本内容
+        $("div").text("新的div文本内容");
+      })
+    })
+
+    // attr的两种方式一参和两参
+    $(function () {
+      // 读取val text以外的值
+      $("#btn5").click(function () {
+        alert($("#img1").attr("src"));
+      })
+
+      $("#btn6").click(function () {
+        $("#img1").attr("src", "./img/zhaofour.jpg");
+      })
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" name="" id="txt1" value="text1"><br>
+  <input type="text" name="" id="txt2" value="text2" disabled="true"><br>
+  <input type="text" name="" id="txt3" value="text3"><br>
+  <input type="text" name="" id="txt4" value="text4" disabled><br>
+  <hr>
+  <input type="checkbox" value="游泳">游泳<br>
+  <input type="checkbox" value="健身" checked>健身<br>
+  <input type="checkbox" value="打游戏" checked>打游戏<br>
+  <hr>
+  <select name="" id="yuyan">
+    <option value="java">java</option>
+    <option value="go" selected>go</option>
+    <option value="python">python</option>
+  </select>
+  <hr>
+  <button id="btn1">所有可用的text设值为hello</button><br>
+  <button id="btn2">显示被选中的复选框的值</button><br>
+  <button id="btn3">显示下拉列表选中的值</button><br>
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script>
+    // 表单属性过滤器：根据一个表单中的dom对象的状态情况来定位dom对象.
+    // dom状态包括:启用状态(enabled),不可用状态(disabled),选择状态(checked),例如dadio,checkbox等.
+    // 选中可用的文本框:$(":text:enabled")
+    // 选中不可用的文本框:$(":text:disabled")
+    // 复选框选中的元素:$(":checkbox:checked")
+    // 选择器>option:selected
+
+    // btn1
+    $(function () {
+      // 获取所有可以使用的text
+      $("#btn1").click(function () {
+        var obj = $(":text:enabled");
+        // 设置jQuery数组中所有dom对象的value值
+        obj.val("hello");
+      })
+
+      // btn2
+      $("#btn2").click(function () {
+        // 获取选中的checkbox
+        var obj = $(":checkbox:checked");
+        for (var i = 0; i < obj.length; i++) {
+          // alert( obj[i].value);
+          alert( $(obj[i]).val());
+        }
+      })
+
+      // btn3
+      $("#btn3").click(function() {
+        // 获取select下拉列表选中元素
+        // 选择器>option:selected
+        // var obj = $("select>option:selected"); // 方式一
+        var obj = $("#yuyan>option:selected"); // 方式二
+        alert(obj.val());
+
+      })
+    })
+  </script>
+</body>
+
+</html>

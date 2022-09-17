@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQueryDemo1</title>
+</head>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+  // 把ducument转化成jQuery库可以使用的对象，ready的意思是当页面dom加载成功以后会执行ready内的内容，相当于onLoad事件。
+  $(document).ready(function() {alert("Hello JQuery");})
+
+  // 可以简写为:
+  $(function(){alert("Hello jQuery")});
+
+  // 或者这样:
+  jQuery(function(){alert("Hello jQuery")});
+
+  // 再或者这样:
+  window.jQuery(function(){alert("Hello jQuery")});
+
+  // 所以$(document).ready() $() jQuery() window.jQuery()是等价的
+
+</script>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 常用函数val append each -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" value="z"><br>
+  <input type="text" value="b"><br>
+  <input type="text" value="c"><br>
+
+  <select>
+    <option value="a">a</option>
+    <option value="b">b</option>
+    <option value="c">c</option>
+  </select>
+  <br>
+  <select>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select>
+  <br>
+  <div id="father" style="background-color: red;">我是父div</div>
+  <br>
+  <span>我是mysql<b>数据库</b></span><br>
+
+  <span>我是jdbc</span>
+  <br>
+  <input type="button" value="使用remove删除所有对象" id="btn1"><br>
+  <input type="button" value="使用empty删除子dom对象" id="btn2"><br>
+  <input type="button" value="增加一个子dom对象" id="btn3"><br>
+  <input type="button" value="html()获取文本带有html标签内容" id="btn4"><br>
+  <input type="button" value="text获取文本带有html标签内容" id="btn5"><br>
+  <input type="button" value="设置span的所有dom文本值" id="btn6"><br>
+  <input type="button" value="循环普通数组" id="btn7"><br>
+  <input type="button" value="循环json" id="btn8"><br>
+  <input type="button" value="循环dom" id="btn9"><br>
+  <input type="button" value="循环jQuery对象" id="btn10"><br>
+
+
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript">
+    // remove $(选择器).remove() 将数组中所有dom对象以及子对象一并删除
+    // empty $(选择器).empty() 将数组中所有dom对象的子对象删除
+    // remove和empty不一样,remove全删了,empty只删除了子对象,也就是清空
+    // apppend $(选择器).append("<div>我动态添加的div</div>") 为数组中所有dom对象添加子对象
+
+    $(function () {
+      // 使用remove删除所有对象
+      $("#btn1").click(function () {
+        $("select").remove();
+      })
+
+      // 使用empty删除子dom对象
+      $("#btn2").click(function () {
+        $("select").empty();
+      })
+
+      // 使用apppend增加一个子dom对象
+      // $("#btn3").click(function() {
+      //   $("#father").append("<input type='button' value='我是增加的按钮'><br>");
+      // })
+
+      // 使用append增加一个表格
+      $("#btn3").click(function () {
+        $("#father").append("<table border=1><tr><td>第一列</td><td>第二列</td><br></table>");
+      })
+      // 所以增加一个table 表格 div checkbox radio select都可以实现
+
+
+      // html 设置或返回被选元素的内容相当于innerHTML
+      // 1.$(选择器).html() 无参数调用方法,获取dom数组第一个匹配元素的内容
+      // 2.$(选择器).html(值) 有参数调用,用于设置dom数组中所有元素的内容
+
+      // html加参数和不加参数
+      // 使用html()函数获取数组中第一个dom对象的文本值 html()会把内容都返回,类似于innerHTML 我是mysql<b>数据库</b>
+      $("#btn4").click(function () {
+        alert($("span").html());
+      })
+      // 使用text()函数获取数组中第一个dom对象的文本值 text()会无视标签并且拼接,业就是只显示文本内容类似于innerText 我是mysql数据库我是jdbc
+      $("#btn5").click(function () {
+        alert($("span").text());
+      })
+      // 使用html(参数)来设置dom对象的文本值
+      $("#btn6").click(function () {
+        $("span").html("我是新的<b>数据</b>") // 标签在起作用
+      })
+
+      // each 是对数组 json和dom数组循环处理,对每个元素调用一次函数
+      // 1.$each( 要遍历的对象,function(index, element) { 处理程序 })
+      // 2.jQuery对象.each(function(index, element){ 处理程序 })
+      // index:数组的下标 element: 数组的对象
+      // 可以对以下三种情况循环
+      // var arr = {1, 2, 3} 数组
+      // var json = { "name": "lisi", "age":20 } json
+      // var obj = $(":text") dom数组
+
+      // each语法格式1
+      // each循环普通数组
+      $("#btn7").click(function () {
+        // 循环普通数组,非dom数组
+        var arr = [1, 2, 3];
+        $.each(arr, function (index, element) {
+          alert("循环变量:" + index + "====数组成员:" + element); // 输出了3次,分别为123,说明每一次成员都输出了一次
+        })
+      })
+
+      // each循环json
+      $("#btn8").click(function () {
+        var json = {
+          "name": "张三",
+          "age": 20
+        };
+        $.each(json, function (i, n) {
+          alert("i是key=" + i + +",n是值=" + n);
+        })
+      })
+
+      // each循环dom
+      $("#btn9").click(function () {
+        var domArray = $(":text"); // input组成的dom数组
+        $.each(domArray, function (i, n) {
+          alert("i=" + i + ",n=" + n.value);
+        })
+      })
+
+      // each语法格式2 jQuery对象(就是dom数组).each(function(index, element) {处理程序})
+      $("#btn10").click(function () {
+        // 循环jQuery对象,也就是dom数组
+        $(":text").each(function (i, n) {
+          alert("i=" + i + ",n=" + n.value);
+        })
+      })
+
+    })
+  </script>
+</body>
+
+</html>

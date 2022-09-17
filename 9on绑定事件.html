@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="mydiv">
+    我是mydiv,我需要增加button
+  </div>
+  <br>
+  <input type="button" value="创建dom对象,给dom对象添加事件" id="btn1">
+
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script>
+    // on可以实现动态的dom事件绑定机制,给创建的button绑定事件
+    // (选择器).on(事件名称, 事件处理函数)
+    // 事件名称就是js事件中去掉on的部分,例如js中的onclick,jQuery中就是click
+    // 例如 $("#btn").on("click", function(){处理按钮单击})
+    $(function(){
+      $("#btn1").click(function() {
+        // append增加dom对象
+        $("#mydiv").append("<input id='newBtn' type='button' value='我是新加的函数'/>");
+        // 使用on给按钮绑定事件
+        $("#newBtn").on("click", function() {
+          alert("新建的按钮被单击了");
+        })
+      })
+    })
+
+  </script>
+</body>
+</html>
